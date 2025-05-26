@@ -1,6 +1,6 @@
 # Telegram Entities HTML Renderer
 
-[![tests](https://github.com/asokol1981/telegram-entities-html/workflows/tests/badge.svg)](https://github.com/asokol1981/telegram-entities-html/actions) [![codecov](https://codecov.io/gh/asokol1981/telegram-entities-html/branch/main/graph/badge.svg)](https://codecov.io/gh/asokol1981/telegram-entities-html)
+[![tests](https://github.com/asokol1981/telegram-entities-html/workflows/tests/badge.svg)](https://github.com/asokol1981/telegram-entities-html/actions) [![codecov](https://codecov.io/gh/asokol1981/telegram-entities-html/branch/main/graph/badge.svg)](https://codecov.io/gh/asokol1981/telegram-entities-html) [![downloads](https://img.shields.io/packagist/dt/asokol1981/telegram-entities-html.svg)](https://packagist.org/packages/asokol1981/telegram-entities-html)
 
 📦 Turn Telegram message entities into HTML with ease.
 
