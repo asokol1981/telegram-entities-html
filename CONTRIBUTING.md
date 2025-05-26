@@ -52,21 +52,21 @@ Please ensure the following:
 
 - ✅ All tests pass:
 
-```bash
-make test
-```
+    ```bash
+    make test
+    ```
 
 - ✅ Code coverage remains at 100%:
 
-```bash
-make coverage
-```
+    ```bash
+    make coverage
+    ```
 
 - ✅ Codecov config is valid (optional):
 
-```bash
-make codecov-validate
-```
+    ```bash
+    make codecov-validate
+    ```
 
 ---
 
