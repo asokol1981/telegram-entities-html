@@ -37,6 +37,17 @@ class RendererTest extends TestCase
                     'testing' => null,
                 ],
             ],
+            'smoke_test' => [
+                'text' => 'ok',
+                'entities' => [],
+                'result' => 'ok',
+                'options' => [
+                    'fix_inaccuracies' => false,
+                    'throw_errors' => false,
+                    'expected_exception' => null,
+                    'testing' => null,
+                ],
+            ],
             'empty_text_and_entities' => [
                 'text' => '',
                 'entities' => [],

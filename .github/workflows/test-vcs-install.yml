@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     paths:
       - ".github/workflows/test-vcs-install.yml"
+      - ".gitattributes"
       - "composer.json"
       - "src/**.php"
       - "README.md"
@@ -12,6 +13,7 @@ on:
     branches: [ main ]
     paths:
       - ".github/workflows/test-vcs-install.yml"
+      - ".gitattributes"
       - "composer.json"
       - "src/**.php"
       - "README.md"
@@ -60,3 +62,23 @@ jobs:
       - name: Composer update
         working-directory: test-project
         run: composer update
+
+      - name: Create test.php to validate package functionality
+        working-directory: test-project
+        run: |
+          echo "<?php
+          require __DIR__ . '/vendor/autoload.php';
+          try {
+              if ((new ASokol1981\\Telegram\\Entities\\Html\\Renderer())->render('ok', []) !== 'ok') {
+                  throw new Exception();
+              }
+          } catch (Throwable \$e) {
+              echo 'Render test failed: ' . \$e->getMessage() . PHP_EOL;
+              exit(1);
+          }
+          echo 'Render test passed.' . PHP_EOL;
+          " > test.php
+
+      - name: Run smoke test
+        working-directory: test-project
+        run: php test.php

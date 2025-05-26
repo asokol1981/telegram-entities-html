@@ -5,14 +5,16 @@ on:
     branches: [ main ]
     paths:
       - ".github/workflows/test-composer-require.yml"
+      - ".gitattributes"
       - "composer.json"
       - "Makefile"
   pull_request:
     branches: [ main ]
     paths:
+      - ".github/workflows/test-composer-require.yml"
+      - ".gitattributes"
       - "composer.json"
       - "Makefile"
-      - ".github/workflows/test-composer-require.yml"
 
 jobs:
   test:
@@ -48,3 +50,23 @@ jobs:
       - name: Composer require package
         working-directory: test-project
         run: composer require asokol1981/telegram-entities-html
+
+      - name: Create test.php to validate package functionality
+        working-directory: test-project
+        run: |
+          echo "<?php
+          require __DIR__ . '/vendor/autoload.php';
+          try {
+              if ((new ASokol1981\\Telegram\\Entities\\Html\\Renderer())->render('ok', []) !== 'ok') {
+                  throw new Exception();
+              }
+          } catch (Throwable \$e) {
+              echo 'Render test failed: ' . \$e->getMessage() . PHP_EOL;
+              exit(1);
+          }
+          echo 'Render test passed.' . PHP_EOL;
+          " > test.php
+
+      - name: Run smoke test
+        working-directory: test-project
+        run: php test.php
