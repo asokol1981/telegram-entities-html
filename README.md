@@ -17,6 +17,14 @@
 
 ## Installation
 
+### Composer
+
+```bash
+composer require asokol1981/telegram-entities-html
+```
+
+### VCS
+
 If the package is not available on Packagist, you can install it by adding the following to your `composer.json`:
 
 ```json
