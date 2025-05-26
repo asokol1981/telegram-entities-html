@@ -46,6 +46,11 @@ artisan:
 php-cs-fixer:
 	docker compose exec telegram-entities-html vendor/bin/php-cs-fixer fix
 
+# https://docs.codecov.com/docs/codecov-yaml
+.PHONY: codecov-validate
+codecov-validate:
+	curl -X POST --data-binary @codecov.yml https://codecov.io/validate
+
 # This empty rule prevents "make" from throwing an error
 # when extra arguments (like "bash") are passed as targets.
 %:

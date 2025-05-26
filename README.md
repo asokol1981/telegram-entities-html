@@ -204,6 +204,19 @@ Runs PHP-CS-Fixer inside the container to automatically fix coding style issues 
 
 ---
 
+### ✅ Validate Codecov Configuration
+
+You can validate codecov.yml configuration using:
+
+```bash
+make codecov-validate
+```
+
+This command checks the syntax and structure of the .codecov.yml file using Codecov’s validation API.
+It helps catch errors before pushing changes.
+
+---
+
 **ℹ️ Note:**
 When passing arguments to `exec`, `composer`, `artisan`, `test`, or `coverage` targets, **always prefix them with `--`** so `make` doesn't interpret them as its own flags.
 
