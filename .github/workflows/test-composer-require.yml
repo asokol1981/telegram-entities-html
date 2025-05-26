@@ -1,0 +1,42 @@
+name: test composer require
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php:
+          - "8.1"
+          - "8.2"
+          - "8.3"
+
+    steps:
+      - name: Checkout (just for context)
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Create project directory
+        run: mkdir test-project
+
+      - name: Create minimal composer.json
+        working-directory: test-project
+        run: |
+          echo '{
+            "name": "dummy/test-project",
+            "description": "Temporary test project",
+            "require": {}
+          }' > composer.json
+
+      - name: Composer require package
+        working-directory: test-project
+        run: composer require asokol1981/telegram-entities-html
